@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.example.gallery_lab7"
         minSdk = 25
-        targetSdk = 34
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -71,14 +71,14 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    implementation("androidx.constraintlayout:constraintlayout:2.0.0-alpha2")
-    implementation("androidx.recyclerview:recyclerview:1.0.0")
+    //implementation(libs.recyclerview)
 
-    implementation("org.jetbrains.kotlin:kotlinstdlib-jdk7:1.9.0")
+    //implementation(libs.retrofit)
+    //implementation(libs.retrofit.converter.scalars)
 
-    implementation("com.squareup.retrofit2:retrofit:2.5.0")
-
-    implementation("com.squareup.retrofit2:converter-scalars:2.5.0")
+    implementation("androidx.recyclerview:recyclerview:1.3.1")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
 
 
 }

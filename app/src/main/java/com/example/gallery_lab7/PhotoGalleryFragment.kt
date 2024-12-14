@@ -18,11 +18,9 @@ import retrofit2.converter.scalars.ScalarsConverterFactory
 private const val TAG = "PhotoGalleryFragment"
 
 class PhotoGalleryFragment : Fragment() {
-    private lateinit var photoRecyclerView:
-            RecyclerView
+    private lateinit var photoRecyclerView: RecyclerView
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
-        val view =
-            inflater.inflate(R.layout.fragment_photo_gallery, container, false)
+        val view = inflater.inflate(R.layout.fragment_photo_gallery, container, false)
         photoRecyclerView = view.findViewById(R.id.photo_recycler_view)
         photoRecyclerView.layoutManager = GridLayoutManager(context, 3)
         return view
@@ -33,8 +31,7 @@ class PhotoGalleryFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val retrofit: Retrofit =
-            Retrofit.Builder().baseUrl("https://www.flickr.com/").addConverterFactory(ScalarsConverterFactory.create()).build()
+        val retrofit: Retrofit = Retrofit.Builder().baseUrl("https://www.flickr.com/").addConverterFactory(ScalarsConverterFactory.create()).build()
         val flickrApi: FlickrApi = retrofit.create(FlickrApi::class.java)
         val flickrHomePageRequest: Call<String> = flickrApi.fetchContents()
 
@@ -45,6 +42,7 @@ class PhotoGalleryFragment : Fragment() {
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 Log.d(TAG, "Response received:${response.body()}")
             }
+
         })
     }
 
