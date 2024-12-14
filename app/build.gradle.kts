@@ -70,4 +70,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation("androidx.constraintlayout:constraintlayout:2.0.0-alpha2")
+    implementation("androidx.recyclerview:recyclerview:1.0.0")
 }
