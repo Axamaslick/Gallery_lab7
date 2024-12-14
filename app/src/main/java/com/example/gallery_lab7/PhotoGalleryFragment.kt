@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.gallery_lab7.api.FlickrApi
 import retrofit2.Retrofit
+import retrofit2.converter.scalars.ScalarsConverterFactory
 
 class PhotoGalleryFragment : Fragment() {
     private lateinit var photoRecyclerView:
@@ -21,16 +22,13 @@ class PhotoGalleryFragment : Fragment() {
         return view
     }
     companion object {
-        fun newInstance() =
-            PhotoGalleryFragment()
+        fun newInstance() = PhotoGalleryFragment()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val retrofit: Retrofit =
-            Retrofit.Builder()
-                .baseUrl("https://www.flickr.com/")
-                .build()
+            Retrofit.Builder().baseUrl("https://www.flickr.com/").addConverterFactory(ScalarsConverterFactory.create()).build()
         val flickrApi: FlickrApi =
             retrofit.create(FlickrApi::class.java)
     }
