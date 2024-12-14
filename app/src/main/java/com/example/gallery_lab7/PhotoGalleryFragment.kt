@@ -18,10 +18,8 @@ class PhotoGalleryFragment : Fragment() {
     ): View {
         val view =
             inflater.inflate(R.layout.fragment_photo_gallery, container, false)
-        photoRecyclerView =
-            view.findViewById(R.id.photo_recycler_view)
-        photoRecyclerView.layoutManager =
-            GridLayoutManager(context, 3)
+        photoRecyclerView = view.findViewById(R.id.photo_recycler_view)
+        photoRecyclerView.layoutManager = GridLayoutManager(context, 3)
         return view
     }
     companion object {
