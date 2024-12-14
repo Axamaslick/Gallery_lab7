@@ -7,15 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.gallery_lab7.api.FlickrApi
+import retrofit2.Retrofit
 
 class PhotoGalleryFragment : Fragment() {
     private lateinit var photoRecyclerView:
             RecyclerView
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
         val view =
             inflater.inflate(R.layout.fragment_photo_gallery, container, false)
         photoRecyclerView = view.findViewById(R.id.photo_recycler_view)
@@ -25,5 +23,15 @@ class PhotoGalleryFragment : Fragment() {
     companion object {
         fun newInstance() =
             PhotoGalleryFragment()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        val retrofit: Retrofit =
+            Retrofit.Builder()
+                .baseUrl("https://www.flickr.com/")
+                .build()
+        val flickrApi: FlickrApi =
+            retrofit.create(FlickrApi::class.java)
     }
 }
