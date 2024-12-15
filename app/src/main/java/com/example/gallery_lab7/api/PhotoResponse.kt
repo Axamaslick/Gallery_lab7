@@ -1,5 +1,6 @@
-package com.example.gallery_lab7
+package com.example.gallery_lab7.api
 
+import com.example.gallery_lab7.GalleryItem
 import com.google.gson.annotations.SerializedName
 
 class PhotoResponse {
