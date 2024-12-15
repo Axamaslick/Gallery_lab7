@@ -33,6 +33,8 @@ class PhotoGalleryFragment : Fragment() {
     private lateinit var photoRecyclerView: RecyclerView
     private lateinit var thumbnailDownloader: ThumbnailDownloader<PhotoHolder>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,savedInstanceState: Bundle?): View {
+        viewLifecycleOwner.lifecycle.addObserver(thumbnailDownloader.viewLifecycleObserver)
+
         val view = inflater.inflate(R.layout.fragment_photo_gallery, container, false)
         photoRecyclerView = view.findViewById(R.id.photo_recycler_view)
         photoRecyclerView.layoutManager = GridLayoutManager(context, 3)
@@ -79,13 +81,20 @@ class PhotoGalleryFragment : Fragment() {
                 val drawable = BitmapDrawable(resources, bitmap)
                 photoHolder.bindDrawable(drawable)
             }
-        lifecycle.addObserver(thumbnailDownloader)
+        //lifecycle.addObserver(thumbnailDownloader)
+        lifecycle.addObserver(thumbnailDownloader.fragmentLifecycleObserver)
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        viewLifecycleOwner.lifecycle.removeObserver(thumbnailDownloader.viewLifecycleObserver)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        lifecycle.removeObserver(thumbnailDownloader)
+        lifecycle.removeObserver(thumbnailDownloader.fragmentLifecycleObserver)
+
     }
 
 
