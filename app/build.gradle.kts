@@ -71,14 +71,11 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
-    //implementation(libs.recyclerview)
-
-    //implementation(libs.retrofit)
-    //implementation(libs.retrofit.converter.scalars)
 
     implementation("androidx.recyclerview:recyclerview:1.3.1")
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-scalars:2.9.0")
 
-
+    implementation("com.google.code.gson:gson:2.8.5")
+    implementation("com.squareup.retrofit2:converter-gson:2.4.0")
 }
